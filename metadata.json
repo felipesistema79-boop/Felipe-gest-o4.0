@@ -1,0 +1,6 @@
+{
+  "name": "Sistema ERP/SGM - Obras, Produção e Compras",
+  "description": "Sistema de Gerenciamento de Obras, Produção, Compras e Requisições de Materiais com Banco de Dados na Nuvem Firebase Firestore",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

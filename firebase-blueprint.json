@@ -1,0 +1,235 @@
+{
+  "entities": {
+    "empresa": {
+      "title": "Empresa Config",
+      "description": "Configuração da empresa, dados cadastrais e identidade visual",
+      "type": "object",
+      "properties": {
+        "nomeEmpresa": { "type": "string" },
+        "cnpj": { "type": "string" },
+        "telefone": { "type": "string" },
+        "whatsapp": { "type": "string" },
+        "email": { "type": "string" },
+        "responsavel": { "type": "string" },
+        "endereco": { "type": "string" },
+        "logoBase64": { "type": "string" },
+        "corTemaHex": { "type": "string" }
+      }
+    },
+    "obras": {
+      "title": "Obra",
+      "description": "Obras e pedidos de produção de esquadrias",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "codigo": { "type": "string" },
+        "cliente": { "type": "string" },
+        "vendedorId": { "type": "string" },
+        "vendedorNome": { "type": "string" },
+        "segmento": { "type": "string" },
+        "prioridade": { "type": "string" },
+        "quantidade": { "type": "number" },
+        "cor": { "type": "string" },
+        "dataInicial": { "type": "string" },
+        "prazoDiasUteis": { "type": "number" },
+        "dataPrevistaEntrega": { "type": "string" },
+        "dataAgendada": { "type": "string" },
+        "statusGlobal": { "type": "string" },
+        "observacoes": { "type": "string" },
+        "valorEstimado": { "type": "number" },
+        "fluxoEtapas": { "type": "object" },
+        "arquivada": { "type": "boolean" },
+        "dataCriacao": { "type": "string" }
+      },
+      "required": ["id", "codigo", "cliente", "statusGlobal"]
+    },
+    "etapas": {
+      "title": "Etapa de Fluxo",
+      "description": "Etapas padrão de produção",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "nome": { "type": "string" },
+        "ordem": { "type": "number" }
+      },
+      "required": ["id", "nome", "ordem"]
+    },
+    "segmentos": {
+      "title": "Segmento de Empresa",
+      "description": "Linhas de produto e fluxos específicos",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "nome": { "type": "string" },
+        "descricao": { "type": "string" },
+        "fluxoEtapas": { "type": "array" }
+      },
+      "required": ["id", "nome"]
+    },
+    "vendedores": {
+      "title": "Vendedor",
+      "description": "Vendedores e consultores comerciais",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "nome": { "type": "string" },
+        "email": { "type": "string" },
+        "telefone": { "type": "string" },
+        "ativo": { "type": "boolean" }
+      },
+      "required": ["id", "nome"]
+    },
+    "fornecedores": {
+      "title": "Fornecedor",
+      "description": "Fornecedores de perfis, vidros e acessórios",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "razaoSocial": { "type": "string" },
+        "cnpj": { "type": "string" },
+        "telefone": { "type": "string" },
+        "email": { "type": "string" },
+        "prazoEntregaPadraoDiasUteis": { "type": "number" },
+        "materialEscopo": { "type": "string" },
+        "contato": { "type": "string" }
+      },
+      "required": ["id", "razaoSocial"]
+    },
+    "compras": {
+      "title": "Pedido de Compra",
+      "description": "Pedidos de compra para fornecedores",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "numeroPedido": { "type": "string" },
+        "fornecedorId": { "type": "string" },
+        "fornecedorNome": { "type": "string" },
+        "obraId": { "type": "string" },
+        "obraCodigo": { "type": "string" },
+        "categoria": { "type": "string" },
+        "descricao": { "type": "string" },
+        "dataPedido": { "type": "string" },
+        "prazoDiasUteis": { "type": "number" },
+        "dataPrevisaoEntrega": { "type": "string" },
+        "dataEntregaEfetiva": { "type": "string" },
+        "status": { "type": "string" },
+        "valor": { "type": "number" },
+        "observacao": { "type": "string" }
+      },
+      "required": ["id", "numeroPedido", "fornecedorNome", "status"]
+    },
+    "requisicoes": {
+      "title": "Requisição de Materiais",
+      "description": "Requisições técnicas de materiais para obras",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "codigo": { "type": "string" },
+        "obraId": { "type": "string" },
+        "obraCodigo": { "type": "string" },
+        "obraCliente": { "type": "string" },
+        "solicitante": { "type": "string" },
+        "dataSolicitacao": { "type": "string" },
+        "prioridade": { "type": "string" },
+        "status": { "type": "string" },
+        "observacoesGerais": { "type": "string" },
+        "itens": { "type": "array" }
+      },
+      "required": ["id", "codigo", "obraId", "status"]
+    },
+    "pdca": {
+      "title": "Ciclo PDCA",
+      "description": "Melhoria contínua e planos de ação",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "titulo": { "type": "string" },
+        "fase": { "type": "string" },
+        "descricao": { "type": "string" },
+        "responsavel": { "type": "string" },
+        "prazo": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["id", "titulo", "fase"]
+    },
+    "eisenhower": {
+      "title": "Matriz Eisenhower",
+      "description": "Priorização de tarefas urgentes e importantes",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "titulo": { "type": "string" },
+        "quadrante": { "type": "string" },
+        "responsavel": { "type": "string" },
+        "concluida": { "type": "boolean" }
+      },
+      "required": ["id", "titulo", "quadrante"]
+    },
+    "gut": {
+      "title": "Matriz GUT",
+      "description": "Gravidade, Urgência e Tendência para resolução de problemas",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "problema": { "type": "string" },
+        "gravidade": { "type": "number" },
+        "urgencia": { "type": "number" },
+        "tendencia": { "type": "number" },
+        "pontuacao": { "type": "number" },
+        "acaoProposta": { "type": "string" },
+        "responsavel": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["id", "problema", "pontuacao"]
+    },
+    "fiveWTwoH": {
+      "title": "5W2H",
+      "description": "Planos de Ação 5W2H",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "what": { "type": "string" },
+        "why": { "type": "string" },
+        "where": { "type": "string" },
+        "when": { "type": "string" },
+        "who": { "type": "string" },
+        "how": { "type": "string" },
+        "howMuch": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["id", "what", "who", "when"]
+    },
+    "brainstorming": {
+      "title": "Brainstorming",
+      "description": "Ideias e sugestões da equipe",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "titulo": { "type": "string" },
+        "descricao": { "type": "string" },
+        "autor": { "type": "string" },
+        "categoria": { "type": "string" },
+        "votos": { "type": "number" },
+        "dataCriacao": { "type": "string" }
+      },
+      "required": ["id", "titulo"]
+    },
+    "aprendizados": {
+      "title": "Aprendizados & Decisões de Sucesso",
+      "description": "Banco de lições aprendidas e práticas comprovadas",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "titulo": { "type": "string" },
+        "problemaOuContexto": { "type": "string" },
+        "solucaoAplicada": { "type": "string" },
+        "categoria": { "type": "string" },
+        "diasEconomizados": { "type": "number" },
+        "autor": { "type": "string" },
+        "dataRegistro": { "type": "string" },
+        "reutilizacoes": { "type": "number" }
+      },
+      "required": ["id", "titulo", "solucaoAplicada"]
+    }
+  }
+}
